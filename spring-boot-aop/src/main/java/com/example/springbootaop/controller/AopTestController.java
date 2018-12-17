@@ -23,6 +23,7 @@ public class AopTestController {
     @RequestMapping("/testAroundService")
     public String testAroundService(String key){
 
+        key = key+"888";
         return "环绕通知："+key;
     }
 }

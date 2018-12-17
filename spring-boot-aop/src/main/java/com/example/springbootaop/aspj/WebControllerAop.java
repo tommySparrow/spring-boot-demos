@@ -13,6 +13,7 @@ import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 
 import javax.servlet.http.HttpServletRequest;
+import java.lang.reflect.Field;
 import java.util.Enumeration;
 import java.util.Map;
 
@@ -83,6 +84,7 @@ public class WebControllerAop {
         System.out.println("环绕通知的目标方法名开始：" + proceedingJoinPoint.getSignature().getName());
         try {
             Object obj = proceedingJoinPoint.proceed();
+            Field[] fields = obj.getClass().getFields();
             System.out.println("环绕通知的目标方法名结束：" + proceedingJoinPoint.getSignature().getName());//执行完目标方法后,执行此行语句
             return obj;
         } catch (Throwable throwable) {
